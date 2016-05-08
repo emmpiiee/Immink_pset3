@@ -66,6 +66,9 @@
                                     <constraint firstAttribute="width" constant="46" id="f7W-lh-clG"/>
                                 </constraints>
                                 <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="SaveToDatabase:" destination="BYZ-38-t0r" eventType="touchUpInside" id="h9Y-5k-yhT"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LfG-Jd-TBv">
                                 <rect key="frame" x="458" y="33" width="46" height="30"/>
