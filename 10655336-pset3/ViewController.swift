@@ -28,13 +28,14 @@ class ViewController: UIViewController {
         ReadTable()
         tableView.reloadData()
         
-        // Do any additional setup after loading the view, typically from a nib.
     }
+        // Do any additional setup after loading the view, typically from a nib.
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
     // save data to database
     @IBAction func SaveToDatabase(sender: AnyObject) {
@@ -68,7 +69,7 @@ class ViewController: UIViewController {
         }
     }
     
-    // Make a table
+    // Make a table in database
     private func CreateTable() {
         do {
             try db!.run(notes.create(ifNotExists: true) { t in  // create table notes
