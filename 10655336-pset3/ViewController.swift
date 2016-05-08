@@ -13,7 +13,9 @@ import SQLite
 class ViewController: UIViewController {
 
     @IBOutlet weak var AddingField: UITextField!
-    @IBOutlet weak var TableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
+    
+    var todolist = Array<String> ()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,4 +29,3 @@ class ViewController: UIViewController {
 
 
 }
-hdabjdah
