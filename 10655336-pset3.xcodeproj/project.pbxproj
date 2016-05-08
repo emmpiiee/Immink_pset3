@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B51AEAEE1CDF6FA800CFF260 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51AEAED1CDF6FA800CFF260 /* TableViewCell.swift */; };
 		B51AEBD71CDF8A6600CFF260 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B51AEBCA1CDF8A5E00CFF260 /* SQLite.framework */; };
+		B51AEBD81CDF8D8500CFF260 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FD32651CDF5B2100865F0D /* ViewController.swift */; };
+		B51AEBD91CDF8D8800CFF260 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51AEAED1CDF6FA800CFF260 /* TableViewCell.swift */; };
 		B5FD32641CDF5B2000865F0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FD32631CDF5B2000865F0D /* AppDelegate.swift */; };
-		B5FD32661CDF5B2100865F0D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FD32651CDF5B2100865F0D /* ViewController.swift */; };
 		B5FD32691CDF5B2100865F0D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5FD32671CDF5B2100865F0D /* Main.storyboard */; };
 		B5FD326B1CDF5B2100865F0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5FD326A1CDF5B2100865F0D /* Assets.xcassets */; };
 		B5FD326E1CDF5B2100865F0D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5FD326C1CDF5B2100865F0D /* LaunchScreen.storyboard */; };
@@ -384,8 +384,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B51AEAEE1CDF6FA800CFF260 /* TableViewCell.swift in Sources */,
-				B5FD32661CDF5B2100865F0D /* ViewController.swift in Sources */,
+				B51AEBD91CDF8D8800CFF260 /* TableViewCell.swift in Sources */,
+				B51AEBD81CDF8D8500CFF260 /* ViewController.swift in Sources */,
 				B5FD32641CDF5B2000865F0D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

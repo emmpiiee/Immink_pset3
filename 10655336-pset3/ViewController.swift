@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     var todolist = Array<String> ()
     
     // Make SQL expressions
-    var db: Connection?
+    private var db: Connection?
     let notes = Table("notes")
     let id = Expression<Int64>("id")
     let note = Expression<String>("note")
@@ -40,8 +40,10 @@ class ViewController: UIViewController {
         
     }
     
+    // Make connection database
     private  func SetUpDatabase(){
         let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first!
+        
         do {
             db = try Connection("\(path)/db.sqlite3")
             CreateTable()
