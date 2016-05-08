@@ -14,13 +14,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var AddingField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     
-    var todolist = Array<String> ()
-    
     // Make SQL expressions
     private var db: Connection?
     let notes = Table("notes")
     let id = Expression<Int64>("id")
     let note = Expression<String>("note")
+    
+    var todolist = Array<String> ()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,12 +44,14 @@ class ViewController: UIViewController {
             do {
                 let rowId = try db!.run(insert)
                 AddingField.text = ""
+                print(rowId)
                 ReadTable()
                 tableView.reloadData()
             } catch {
                 print("Item not added: \(error)")
             }
         }
+        print(todolist)
 
     }
     
@@ -124,13 +126,13 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cellNote = self.tableView.dequeueReusableCellWithIdentifier("noteCell", forIndexPath: indexPath) as! TableViewCell
+        let cellNote = self.tableView.dequeueReusableCellWithIdentifier("cellNote", forIndexPath: indexPath) as! TableViewCell
         
         cellNote.textNote.text = todolist[indexPath.row]
         
         return cellNote
     }
-    
+
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return todolist.count
     }
