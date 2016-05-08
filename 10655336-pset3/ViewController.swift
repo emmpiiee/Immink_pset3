@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     var todolist = Array<String> ()
     
     // Make SQL expressions
-    private var db: Connection?
+    var db: Connection?
     let notes = Table("notes")
     let id = Expression<Int64>("id")
     let note = Expression<String>("note")
