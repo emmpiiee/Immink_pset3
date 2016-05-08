@@ -90,7 +90,48 @@ class ViewController: UIViewController {
         }
     }
     
-    private func DeleteNote(){
+    private func DeleteNote(deleteNote: String) {
         
+        let delete = notes.filter(note == deleteNote)
+        do {
+            if try db!.run(delete.delete()) > 0 {
+                print("Delete Succes!")
+                ReadTable()
+            } else {
+                print("Not found")
+            }
+            
+        } catch {
+            print("delete failed: \(error)")
+        }
+    }
+}
+
+
+extension ViewController: UITableViewDelegate {
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            
+            DeleteNote(todolist[indexPath.row])
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        }
+    }
+}
+
+extension ViewController: UITableViewDataSource {
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cellNote = self.tableView.dequeueReusableCellWithIdentifier("noteCell", forIndexPath: indexPath) as! TableViewCell
+        
+        cellNote.textNote.text = todolist[indexPath.row]
+        
+        return cellNote
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return todolist.count
     }
 }
