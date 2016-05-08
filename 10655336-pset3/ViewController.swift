@@ -25,6 +25,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        SetUpDatabase()
+        ReadTable()
+        tableView.reloadData()
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -35,18 +38,39 @@ class ViewController: UIViewController {
     }
 
     @IBAction func SaveToDatabase(sender: AnyObject) {
+    
     }
     
     private  func SetUpDatabase(){
-        
+        let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first!
+        do {
+            db = try Connection("\(path)/db.sqlite3")
+            CreateTable()
+        } catch {
+            print("Cannot connect to database: \(error)")
+        }
     }
-    
+
     private func CreateTable() {
-        
+        do {
+            try db!.run(notes.create(ifNotExists: true) { t in  // create table notes
+                t.column(id, primaryKey: .Autoincrement)        //create collumn id
+                t.column(note)                                  // create collumn note
+                })
+        } catch {
+            print("Failed to create a table: \(error)")
+        }
     }
 
     private func ReadTable() {
-        
+        todolist.removeAll()
+        do {
+            for item in try db!.prepare(notes) {
+                todolist.append(item[note])
+            }
+        } catch {
+            print("Cannot read database: \(error)")
+        }
     }
     
     private func DeleteNote(){
