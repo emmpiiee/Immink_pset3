@@ -9,9 +9,8 @@
 import UIKit
 import SQLite
 
-
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var AddingField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     
@@ -31,14 +30,14 @@ class ViewController: UIViewController {
         
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    @IBAction func SaveToDatabase(sender: AnyObject) {
     
+    @IBAction func SaveToDatabase(sender: AnyObject) {
+        
     }
     
     private  func SetUpDatabase(){
@@ -50,7 +49,7 @@ class ViewController: UIViewController {
             print("Cannot connect to database: \(error)")
         }
     }
-
+    
     private func CreateTable() {
         do {
             try db!.run(notes.create(ifNotExists: true) { t in  // create table notes
@@ -61,7 +60,7 @@ class ViewController: UIViewController {
             print("Failed to create a table: \(error)")
         }
     }
-
+    
     private func ReadTable() {
         todolist.removeAll()
         do {
