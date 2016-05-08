@@ -36,8 +36,21 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // save data to database
     @IBAction func SaveToDatabase(sender: AnyObject) {
-        
+        if AddingField.text != nil {
+            let insert = notes.insert(note <- AddingField.text!)
+            
+            do {
+                let rowId = try db!.run(insert)
+                AddingField.text = ""
+                ReadTable()
+                tableView.reloadData()
+            } catch {
+                print("Item not added: \(error)")
+            }
+        }
+
     }
     
     // Make connection database
@@ -46,18 +59,21 @@ class ViewController: UIViewController {
         
         do {
             db = try Connection("\(path)/db.sqlite3")
+            print("connection made")
             CreateTable()
         } catch {
             print("Cannot connect to database: \(error)")
         }
     }
     
+    // Make a table
     private func CreateTable() {
         do {
             try db!.run(notes.create(ifNotExists: true) { t in  // create table notes
                 t.column(id, primaryKey: .Autoincrement)        //create collumn id
                 t.column(note)                                  // create collumn note
                 })
+            print("table made")
         } catch {
             print("Failed to create a table: \(error)")
         }
