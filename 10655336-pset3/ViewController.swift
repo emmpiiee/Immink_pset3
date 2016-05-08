@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import SQLite
+
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var AddingField: UITextField!
+    @IBOutlet weak var TableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
